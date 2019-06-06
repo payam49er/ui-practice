@@ -153,10 +153,13 @@ p {
     background: #333 url('img/showcase.jpg') no-repeat center center/cover;
     height: 100vh;
     color: #fff;
+    position: relative;
 }
 
 #showcase .showcase-content {
     display: flex;
+    position: absolute;
+    top: 0;
     flex-direction: column;
     text-align: center;
     justify-content: center;
