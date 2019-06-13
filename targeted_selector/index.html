@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Targeted Selectors</title>
+    <style>
+        /* direct child */
+        div>p {
+            background: gray;
+        }
+
+        /* directly after */
+        div+p {
+            background: darkgray;
+            color: aliceblue;
+        }
+
+        /* by attribute */
+        a[target='_blank'] {
+            background: red;
+            color: white;
+        }
+
+        a[target='_self'] {
+            background: green;
+            color: white;
+        }
+
+        input {
+            display: block;
+        }
+
+        input[type='text'],
+        input[type='email'] {
+            width: 50%;
+            margin-bottom: 5px;
+        }
+
+        input[type='submit'] {
+            width: 10%;
+            border: none;
+            padding: 5px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <ul>
+            <li>item 1</li>
+            <li>
+                <p>item2</p>
+            </li>
+            <li>item 3</li>
+        </ul>
+
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+    <p>Lorem ipsum dolor sit amet.</p>
+
+    <a href="#">page 1</a>
+    <a href="#" target="_self">page 2</a>
+    <a href="https://www.google.com" target="_blank">Google</a>
+
+    <br>
+    <br>
+    <br>
+
+    <form action="">
+        <input type="text" placeholder="Name">
+        <input type="email" name="email" id="email" placeholder="Email">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
