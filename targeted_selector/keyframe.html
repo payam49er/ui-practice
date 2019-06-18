@@ -18,7 +18,7 @@
             position: relative;
             animation-name: animate1;
             animation-duration: 5s;
-            animation-iteration-count: 2;
+            animation-iteration-count: 1;
             animation-fill-mode: forwards;
         }
 
@@ -35,11 +35,48 @@
                 top: 300px;
             }
         }
+
+        .box2 {
+            background: blueviolet;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: animate2 5s forwards ease-in-out;
+        }
+
+        @keyframes animate2 {
+            25% {
+                top: 100px;
+                left: 300px;
+            }
+
+            50% {
+                top: 300px;
+                left: 300px;
+                background: green;
+                border-radius: 10% 10% 0 0;
+            }
+
+            75% {
+                top: 300px;
+                left: 0;
+                background: white;
+                border-radius: 50% 50% 10% 10%;
+            }
+
+            100% {
+                top: 0;
+                left: 0;
+                background: orangered;
+                border-radius: 50% 50% 50% 50%;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="box"></div>
+    <div class="box2"></div>
 </body>
 
 </html>
