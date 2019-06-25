@@ -8,7 +8,106 @@
     <script src="https://kit.fontawesome.com/dbfc0d96e1.js"></script>
     <title>Presentation</title>
     <style>
+        :root {
+            --page-1-color: steelblue;
+            --page-2-color: tan;
+            --page-3-color: teal;
+            --page-4-color: slateblue;
+            --animate-spped: 3s;
+        }
 
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.4;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* page colors */
+        #page-1 {
+            background: var(--page-1-color);
+        }
+
+        #page-2 {
+            background: var(--page-2-color);
+        }
+
+        #page-3 {
+            background: var(--page-3-color);
+        }
+
+        #page-4 {
+            background: var(--page-4-color);
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 4rem;
+        }
+
+        .page h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin: 1rem;
+        }
+
+        .page p {
+            font-size: 1.3rem;
+        }
+
+        .btn {
+            display: block;
+            padding: 1rem 2rem;
+            background: #f4f4f4;
+            color: #333;
+            text-decoration: none;
+            border: none;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease-in;
+        }
+
+        .btn:hover,
+        .btn-dark {
+            background: #333;
+            color: #fff;
+        }
+
+        .btn-dark:hover {
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        /* Page Animation */
+        #page-1 h1 {
+            transform: translateY(-1200px);
+            animation: heading var(--animate-spped) forwards ease-in;
+        }
+
+        #page-1 p {
+            transform: translateX(-2000px);
+            animation: paragraph var(--animate-spped) forwards ease-in 2s;
+        }
+
+        /* Key frame */
+        @keyframes heading {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes paragraph {
+            to {
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
 
@@ -22,9 +121,6 @@
         <div>
             <a href="#page-2" class="btn btn-dark">Next Page <i class="fas fa-arrow-circle-down"></i></a>
         </div>
-        <div>
-            <a href="#page-2" class="btn btn-dark">Prev Page <i class="fas fa-arrow-circle-up"></i></a>
-        </div>
     </section>
     <section id="page-2" class="page">
         <h1>Welcome to my Presentation</h1>
@@ -35,7 +131,7 @@
             <a href="#page-3" class="btn btn-dark">Next Page <i class="fas fa-arrow-circle-down"></i></a>
         </div>
         <div>
-            <a href="#page-2" class="btn btn-dark">Prev Page <i class="fas fa-arrow-circle-up"></i></a>
+            <a href="#page-1" class="btn btn-dark">Prev Page <i class="fas fa-arrow-circle-up"></i></a>
         </div>
     </section>
     <section id="page-3" class="page">
@@ -44,12 +140,34 @@
             rem ea impedit, saepe neque atque nihil. Fuga a odit modi excepturi. Deserunt molestias odio, atque rerum
             velit libero aperiam accusamus enim cum minima dolore.</p>
         <div>
-            <a href="#page-2" class="btn btn-dark">Next Page <i class="fas fa-arrow-circle-down"></i></a>
+            <a href="#page-4" class="btn btn-dark">Next Page <i class="fas fa-arrow-circle-down"></i></a>
         </div>
         <div>
             <a href="#page-2" class="btn btn-dark">Prev Page <i class="fas fa-arrow-circle-up"></i></a>
         </div>
     </section>
+    <section id="page-4" class="page">
+        <h1>Welcome to my Presentation</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem error quibusdam iure voluptas ducimus libero
+            rem ea impedit, saepe neque atque nihil. Fuga a odit modi excepturi. Deserunt molestias odio, atque rerum
+            velit libero aperiam accusamus enim cum minima dolore.</p>
+        <div>
+            <a href="#page-3" class="btn btn-dark">Prev Page <i class="fas fa-arrow-circle-up"></i></a>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        $('.btn').on('click', function (event) {
+            if (this.hash !== '') {
+                event.preventDefault();
+                const hash = this.hash;
+                $('html,body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800);
+            }
+        });
+    </script>
 </body>
 
 </html>
