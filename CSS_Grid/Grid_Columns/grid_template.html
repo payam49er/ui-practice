@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .container{
+            display: grid;
+            grid-template-areas:
+             'header header header'
+             'content content sidebar'
+             'box-1 box-2 box-2'
+             'box-3 box-3 box-3'
+             'footer footer footer';
+             grid-gap: 1rem;
+        }
+        .header{
+            grid-area: header;
+            text-align: center;
+        }
+
+        .content{
+            grid-area: content;
+        }
+        .sidebar{
+            grid-area: sidebar;
+        }
+
+        .box-1{
+            grid-area: box-1;
+        }
+        .box-2{
+            grid-area: box-2;
+        }
+        .box-3{
+            grid-area: box-3;
+        }
+        footer{
+            grid-area: footer;
+            text-align: center;
+        }
+       .header,.content,.sidebar,.box-1,.box-2,.box-3,.footer{
+            border: 1px #ccc solid;
+            padding: 0.5rem;
+        }
+
+        @media(max-width:500px){
+            .container{
+                grid-template-areas:
+                'header'
+                'content'
+                'sidebar'
+                'box-1'
+                'box-2'
+                'box-3'
+                'footer';
+                grid-gap: 1rem;
+            }
+        }
+    </style>
+    <title>Grid Template</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header"><h1>My Website</h1></header>
+        <section class="content">
+            <h3>Welcome to my site</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem ipsum exercitationem laboriosam incidunt voluptates assumenda iure necessitatibus nihil nesciunt odio eum, perspiciatis molestias voluptatum iusto dicta maxime error excepturi? Quia minima provident veniam, fugiat, dignissimos dolor aspernatur id sit vitae possimus quis, necessitatibus molestias perferendis iste nobis voluptatum natus nostrum.</p>
+        </section>
+        <aside class="sidebar">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Some company</li>
+                <li>50 Main St, Boston, MA</li>
+                <li>something@something.com</li>
+                <li>555-555-5555</li>
+            </ul>
+        </aside>
+        <div class="box-1">
+            <h3>Heading</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore rem explicabo facilis in, delectus iusto! Labore vitae adipisci illo accusantium exercitationem quod asperiores assumenda dolores, beatae iusto quam et cumque totam tempora eligendi. Consequuntur repellat cum ducimus aspernatur, ex sequi.</p>
+        </div>
+        <div class="box-2">
+            <h3>Heading</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore rem explicabo facilis in, delectus iusto! Labore vitae adipisci illo accusantium exercitationem quod asperiores assumenda dolores, beatae iusto quam et cumque totam tempora eligendi. Consequuntur repellat cum ducimus aspernatur, ex sequi.</p>
+        </div>
+ 
+        <div class="box-3">
+            <h3>Heading</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore rem explicabo facilis in, delectus iusto! Labore vitae adipisci illo accusantium exercitationem quod asperiores assumenda dolores, beatae iusto quam et cumque totam tempora eligendi. Consequuntur repellat cum ducimus aspernatur, ex sequi.</p>
+        </div>
+        <footer class="footer">
+            Payam Company
+        </footer>
+    </div>
+    
+</body>
+</html>
