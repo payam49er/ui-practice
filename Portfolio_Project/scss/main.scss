@@ -6,7 +6,14 @@ $medium-color:#ccc;
 $dark-color:#333;
 $bg-image: url('../img/showcase.jpg');
 
-
+//set text color
+@function set-text-color($color){
+    @if(lightness($color) > 50){
+        @return #000;
+    } @else{
+        @return #fff;
+    }
+}
 
 //utilities
 .container {
@@ -16,55 +23,69 @@ $bg-image: url('../img/showcase.jpg');
     overflow: hidden;
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
-.bottom-line{
-    border-bottom: 4px solid $main-color;
-    width: 50px;
-    margin: auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+.bottom-line {
+    height: 2px;
+    width: 3rem;
+    background: $main-color;
+    display: block;
+    margin: 0 auto 1rem auto;
 }
 
 //padding
-.py{
-    &-1{
+.py {
+    &-1 {
         padding: 1rem 0;
     }
-    &-2{
+
+    &-2 {
         padding: 2rem 0;
     }
-    &-3{
+
+    &-3 {
         padding: 3rem 0;
     }
-    &-4{
+
+    &-4 {
         padding: 4rem 0;
     }
 }
 
-.my{
-    &-1{
+.my {
+    &-1 {
         margin: 1rem 0;
     }
-    &-2{
+
+    &-2 {
         margin: 2rem 0;
     }
-    &-3{
+
+    &-3 {
         margin: 3rem 0;
     }
-    &-4{
+
+    &-4 {
         margin: 4rem 0;
     }
 }
 
+.section-title {
+    font-size: 2rem;
+    display: block;
+    padding-bottom: 0.5rem;
+    text-align: center;
+    font-weight: 100;
+    text-transform: uppercase;
+}
 
 
 
 //Buttons
 
-%btn-shared{
+%btn-shared {
     display: inline-block;
     padding: 0.8rem 2rem;
     transition: all 0.5s;
@@ -72,18 +93,20 @@ $bg-image: url('../img/showcase.jpg');
     cursor: pointer;
 }
 
-.btn{
-    &-main{
+.btn {
+    &-main {
         @extend %btn-shared;
         color: #333;
         background-color: $main-color;
     }
-    &-light{
+
+    &-light {
         @extend %btn-shared;
         color: #333;
         background-color: $light-color;
     }
-    &-dark{
+
+    &-dark {
         @extend %btn-shared;
         color: #f4f4f4;
         background-color: $dark-color;
@@ -92,11 +115,11 @@ $bg-image: url('../img/showcase.jpg');
 
 button[class^='btn-']:hover,
 a[class^='btn-']:hover,
-input[class^='btn-']:hover{
+input[class^='btn-']:hover {
     background-color: $main-color;
 }
 
-.lead{
+.lead {
     font-size: 1.3rem;
     margin-bottom: 2rem;
 }
@@ -187,64 +210,149 @@ img {
         color: #fff;
 
         //header content
-        .header-content{
+        .header-content {
             text-align: center;
             padding-top: 20%;
-            h1{
+
+            h1 {
                 font-size: 4rem;
                 line-height: 1.2;
             }
         }
     }
 
-    &-inner {}
+    &-inner {
+        background: $bg-image no-repeat 20% 30% / cover;
+        height: 5.5rem;
+        border-bottom: 3px solid $main-color;
+    }
 }
 
 //home section
 
-#home{
-    &-a{
-        .specials{
+#home {
+    &-a {
+        .specials {
             margin-top: 3rem;
             display: grid;
             grid-gap: 1rem;
-            grid-template-columns: repeat(4,1fr);
+            grid-template-columns: repeat(4, 1fr);
 
-            .fas{
+            .fas {
                 color: $main-color;
                 padding-bottom: 0.4rem;
             }
         }
     }
 
-    &-b{
-        .stats{
+    &-b {
+        .stats {
             display: grid;
-            grid-template-columns: repeat(4,1fr);
+            grid-template-columns: repeat(4, 1fr);
 
-            li{
+            li {
                 line-height: 2;
-                &.stats-title{
+
+                &.stats-title {
                     font-size: 1.5rem;
                 }
 
-                &.stats-number{
+                &.stats-number {
                     font-size: 2rem;
                     font-weight: bold;
                 }
             }
 
-            div{
+            div {
                 padding: 3rem 0;
-                &:nth-child(odd){
+
+                &:nth-child(odd) {
                     background: $light-color;
                 }
-                &:nth-child(even){
+
+                &:nth-child(even) {
                     background: $medium-color;
                 }
             }
         }
-        
-        
+
+
+    }
+
+    // Home Section C
+    &-c {
+        .process {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 1.5rem;
+            text-align: center;
+
+            &-step{
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-size: 28px;
+                background: $main-color;
+                border-radius: 50%;
+                height: 15px;
+                width: 15px;
+                line-height: 15px;
+                padding: 1rem;
+                transition: all 1s;
+            }
+
+            &-icon{
+                border-radius: 50%;
+                background: $dark-color;
+                color:set-text-color($dark-color);
+                padding: 2rem;
+                width: 70px;
+                height: 70px;
+                line-height: 70px;
+                text-align: center;
+                position: relative;
+                transition: all 1s;
+
+                &:hover{
+                    background: $main-color;
+                    color: set-text-color($main-color);
+                    width: 90px;
+                    height: 90px;
+                    line-height: 90px;
+
+                    .process-step{
+                        background: set-text-color($light-color);
+                    }
+                }
+            }
+
+        }
+    }
+
+}
+
+#main-footer{
+    background: $dark-color;
+    color: #fff;
+    height: 5rem;
+    .footer-content{
+        display: flex;
+        justify-content: space-between;
+        height: 5rem;
+        align-items: center;
+        .social .fab{
+            margin-right: 1rem;
+            border: 2px #fff solid;
+            border-radius: 50%;
+            height: 20px;
+            width: 20px;
+            line-height: 20px;
+            text-align: center;
+            padding: 0.5rem;
+
+            &:hover{
+                background: $main-color;
+            }
+        }
     }
 }
